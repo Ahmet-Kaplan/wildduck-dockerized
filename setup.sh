@@ -50,6 +50,19 @@ sed -i "s/hostname=\"localhost\"/hostname=\"$HOSTNAME\"/g" /wildduck-dockerized/
 # Haraka
 echo "$HOSTNAME" > /wildduck-dockerized/config/haraka/me
 
+# DuckyAPI
+sed -i "s/# SERVE_DUCKYPANEL=/SERVE_DUCKYPANEL=/" /wildduck-dockerized/config/duckyapi/development.env
+sed -i "s/# BASE_URL=/BASE_URL=/" /wildduck-dockerized/config/duckyapi/development.env
+sed -i "s/PORT=3000/PORT=3030/" /wildduck-dockerized/config/duckyapi/development.env
+sed -i "s/mongodb:\/\/localhost/mongodb:\/\/mongo/" /wildduck-dockerized/config/duckyapi/development.env
+sed -i "s/redis:\/\/localhost/redis:\/\/redis/" /wildduck-dockerized/config/duckyapi/development.env
+sed -i "s/redis:\/\/localhost/redis:\/\/redis/" /wildduck-dockerized/config/duckyapi/development.env
+sed -i "s/example.com/\"$HOSTNAME\"/" /wildduck-dockerized/config/duckyapi/development.env
+
+
+
+
+
 # Traefik
 sed -i "s/HOSTNAMES=example.com/HOSTNAMES=$HOSTNAME/" /wildduck-dockerized/.env
 
